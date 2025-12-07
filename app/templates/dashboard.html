@@ -1,0 +1,149 @@
+{# templates/dashboard.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>📈 Sensor Data of the Last 24 Hours</h1>
+
+    <div class="meta">
+        {% if sensor_data %}
+            There were a total of {{ sensor_data|length }} pieces of data in the past 24 hours.
+        {% else %}
+            There is no sensor data available for the past 24 hours.
+        {% endif %}
+    </div>
+
+    <div class="charts-grid">
+        <div class="chart-card">
+            <h2>Soil Moisture (%)</h2>
+            <canvas id="soilMoistureChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h2>Soil Temperature (°C)</h2>
+            <canvas id="soilTempChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h2>Air Temperature (°C)</h2>
+            <canvas id="airTempChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h2>Air Humidity (%)</h2>
+            <canvas id="airHumidityChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h2>Light Intensity (lux)</h2>
+            <canvas id="lightChart"></canvas>
+        </div>
+    </div>
+</div>
+
+{# 引入 Chart.js #}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // 原始数据：是最近24小时内的所有记录（可能很多条）
+    const rawData = {{ sensor_data|tojson }};
+
+    // 小工具：计算平均值
+    function average(arr) {
+        if (!arr || arr.length === 0) return null;
+        const sum = arr.reduce((a, b) => a + b, 0);
+        return sum / arr.length;
+    }
+
+    // 1. 按“小时”分桶
+    //   key 例子： "2025-12-07 14:00"
+    const buckets = {};
+    rawData.forEach(d => {
+        if (!d.timestamp) return;
+
+        const dt = new Date(d.timestamp);  // "2025-12-07T14:22:33"
+        if (isNaN(dt)) return;
+
+        const year = dt.getFullYear();
+        const month = String(dt.getMonth() + 1).padStart(2, '0');
+        const day = String(dt.getDate()).padStart(2, '0');
+        const hour = String(dt.getHours()).padStart(2, '0');
+
+        const hourKey = `${year}-${month}-${day} ${hour}:00`;
+
+        if (!buckets[hourKey]) {
+            buckets[hourKey] = {
+                soilMoisture: [],
+                soilTemp: [],
+                airTemp: [],
+                airHumidity: [],
+                lightLux: []
+            };
+        }
+
+        const b = buckets[hourKey];
+
+        if (d.soil_moisture_percent != null) {
+            b.soilMoisture.push(Number(d.soil_moisture_percent));
+        }
+        if (d.soil_temperature_c != null) {
+            b.soilTemp.push(Number(d.soil_temperature_c));
+        }
+        if (d.air_temperature_c != null) {
+            b.airTemp.push(Number(d.air_temperature_c));
+        }
+        if (d.air_humidity_percent != null) {
+            b.airHumidity.push(Number(d.air_humidity_percent));
+        }
+        if (d.light_lux != null) {
+            b.lightLux.push(Number(d.light_lux));
+        }
+    });
+
+    // 2. 按时间排序每个小时，并生成“每小时平均值”数组
+    const hourKeys = Object.keys(buckets).sort();  // ISO-like 字符串可以直接排序
+
+    // X 轴：显示 HH:MM（例如 "14:00"）
+    const labels = hourKeys.map(k => k.slice(-5));
+
+    const soilMoisture = hourKeys.map(k => average(buckets[k].soilMoisture));
+    const soilTemp      = hourKeys.map(k => average(buckets[k].soilTemp));
+    const airTemp       = hourKeys.map(k => average(buckets[k].airTemp));
+    const airHumidity   = hourKeys.map(k => average(buckets[k].airHumidity));
+    const lightLux      = hourKeys.map(k => average(buckets[k].lightLux));
+
+    // 3. 画图函数保持不变，只是 data 换成“每小时平均值”
+    function makeLineChart(canvasId, label, data, yLabel) {
+        const ctx = document.getElementById(canvasId).getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: label,
+                    data: data,
+                    fill: false,
+                    tension: 0.2,
+                    pointRadius: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Time (Hourly Avg, Last 24h)' }
+                    },
+                    y: {
+                        title: { display: true, text: yLabel }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
+    makeLineChart('soilMoistureChart', 'Soil Moisture', soilMoisture, '%');
+    makeLineChart('soilTempChart', 'Soil Temperature', soilTemp, '°C');
+    makeLineChart('airTempChart', 'Air Temperature', airTemp, '°C');
+    makeLineChart('airHumidityChart', 'Air Humidity', airHumidity, '%');
+    makeLineChart('lightChart', 'Light Intensity', lightLux, 'lux');
+</script>
+{% endblock %}

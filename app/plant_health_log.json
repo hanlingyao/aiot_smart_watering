@@ -1,0 +1,262 @@
+[
+  {
+    "timestamp": "2025-11-23T08:00:00",
+    "image_path": "images/20251123_080000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 21.4,
+    "soil_moisture_percent": 79.8,
+    "light_lux": 310.2,
+    "air_temperature_c": 26.2,
+    "air_humidity_percent": 22.3,
+    "health_level": 5,
+    "reasons": [
+      "healthy"
+    ],
+    "suggestions": [
+      "Maintain consistent sunlight exposure.",
+      "Water only when top soil feels dry."
+    ]
+  },
+  {
+    "timestamp": "2025-11-23T20:00:00",
+    "image_path": "images/20251123_200000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 21.0,
+    "soil_moisture_percent": 81.2,
+    "light_lux": 5.3,
+    "air_temperature_c": 23.8,
+    "air_humidity_percent": 21.7,
+    "health_level": 4,
+    "reasons": [
+      "need more light"
+    ],
+    "suggestions": [
+      "Increase light exposure for better growth.",
+      "Avoid excessive watering."
+    ]
+  },
+  {
+    "timestamp": "2025-11-24T08:00:00",
+    "image_path": "images/20251124_080000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 21.6,
+    "soil_moisture_percent": 78.9,
+    "light_lux": 320.4,
+    "air_temperature_c": 26.5,
+    "air_humidity_percent": 20.8,
+    "health_level": 5,
+    "reasons": [
+      "healthy"
+    ],
+    "suggestions": [
+      "Ensure proper drainage.",
+      "Maintain current watering schedule."
+    ]
+  },
+  {
+    "timestamp": "2025-11-24T20:00:00",
+    "image_path": "images/20251124_200000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 20.9,
+    "soil_moisture_percent": 82.1,
+    "light_lux": 3.1,
+    "air_temperature_c": 23.7,
+    "air_humidity_percent": 22.4,
+    "health_level": 4,
+    "reasons": [
+      "need more light"
+    ],
+    "suggestions": [
+      "Increase daily light exposure.",
+      "Monitor for overwatering."
+    ]
+  },
+  {
+    "timestamp": "2025-11-25T08:00:00",
+    "image_path": "images/20251125_080000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 21.3,
+    "soil_moisture_percent": 78.2,
+    "light_lux": 360.1,
+    "air_temperature_c": 27.0,
+    "air_humidity_percent": 20.1,
+    "health_level": 5,
+    "reasons": [
+      "healthy"
+    ],
+    "suggestions": [
+      "Continue exposing plant to sunlight.",
+      "Maintain balanced watering."
+    ]
+  },
+  {
+    "timestamp": "2025-11-25T20:00:00",
+    "image_path": "images/20251125_200000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 20.7,
+    "soil_moisture_percent": 82.5,
+    "light_lux": 4.2,
+    "air_temperature_c": 23.4,
+    "air_humidity_percent": 23.2,
+    "health_level": 3,
+    "reasons": [
+      "need more light",
+      "weak growth"
+    ],
+    "suggestions": [
+      "Increase light exposure.",
+      "Improve air circulation.",
+      "Check for potential pests."
+    ]
+  },
+  {
+    "timestamp": "2025-11-26T08:00:00",
+    "image_path": "images/20251126_080000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 21.5,
+    "soil_moisture_percent": 77.8,
+    "light_lux": 350.2,
+    "air_temperature_c": 26.4,
+    "air_humidity_percent": 21.3,
+    "health_level": 5,
+    "reasons": [
+      "healthy"
+    ],
+    "suggestions": [
+      "Maintain consistent lighting.",
+      "Monitor watering schedule."
+    ]
+  },
+  {
+    "timestamp": "2025-11-26T20:00:00",
+    "image_path": "images/20251126_200000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 20.6,
+    "soil_moisture_percent": 81.9,
+    "light_lux": 2.8,
+    "air_temperature_c": 23.5,
+    "air_humidity_percent": 22.8,
+    "health_level": 4,
+    "reasons": [
+      "need more light"
+    ],
+    "suggestions": [
+      "Increase daytime sunlight.",
+      "Avoid overwatering."
+    ]
+  },
+  {
+    "timestamp": "2025-11-27T08:00:00",
+    "image_path": "images/20251127_080000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 21.4,
+    "soil_moisture_percent": 79.0,
+    "light_lux": 330.9,
+    "air_temperature_c": 26.7,
+    "air_humidity_percent": 20.9,
+    "health_level": 5,
+    "reasons": [
+      "healthy"
+    ],
+    "suggestions": [
+      "Maintain good sunlight.",
+      "Water when dry."
+    ]
+  },
+  {
+    "timestamp": "2025-11-27T20:00:00",
+    "image_path": "images/20251127_200000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 20.8,
+    "soil_moisture_percent": 82.8,
+    "light_lux": 3.3,
+    "air_temperature_c": 23.3,
+    "air_humidity_percent": 23.1,
+    "health_level": 3,
+    "reasons": [
+      "need more light",
+      "overgrowth"
+    ],
+    "suggestions": [
+      "Increase light exposure.",
+      "Consider pruning."
+    ]
+  },
+  {
+    "timestamp": "2025-11-28T08:00:00",
+    "image_path": "images/20251128_080000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 21.6,
+    "soil_moisture_percent": 78.4,
+    "light_lux": 345.2,
+    "air_temperature_c": 26.5,
+    "air_humidity_percent": 21.2,
+    "health_level": 5,
+    "reasons": [
+      "healthy"
+    ],
+    "suggestions": [
+      "Maintain current care.",
+      "Check soil moisture weekly."
+    ]
+  },
+  {
+    "timestamp": "2025-11-28T20:00:00",
+    "image_path": "images/20251128_200000.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 20.9,
+    "soil_moisture_percent": 82.2,
+    "light_lux": 4.7,
+    "air_temperature_c": 23.9,
+    "air_humidity_percent": 23.5,
+    "health_level": 3,
+    "reasons": [
+      "need more light",
+      "weak growth"
+    ],
+    "suggestions": [
+      "Increase daily sunlight.",
+      "Improve air circulation."
+    ]
+  },
+  {
+    "timestamp": "2025-12-07T15:36:20.585382",
+    "image_path": "image.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 20.875,
+    "soil_moisture_percent": 79.34066,
+    "light_lux": 14.166666,
+    "air_temperature_c": 24.7,
+    "air_humidity_percent": 20.5,
+    "health_level": 5,
+    "reasons": [
+      "healthy"
+    ],
+    "suggestions": [
+      "Continue providing adequate light.",
+      "Monitor for any signs of stress.",
+      "Maintain current humidity levels.",
+      "Ensure proper air circulation."
+    ]
+  },
+  {
+    "timestamp": "2025-12-07T15:46:40.351505",
+    "image_path": "image.jpg",
+    "plant_name": "Rosmarinus officinalis L.",
+    "soil_temperature_c": 20.875,
+    "soil_moisture_percent": 79.34066,
+    "light_lux": 14.166666,
+    "air_temperature_c": 24.7,
+    "air_humidity_percent": 20.5,
+    "health_level": 5,
+    "reasons": [
+      "healthy"
+    ],
+    "suggestions": [
+      "Continue providing adequate light.",
+      "Monitor for any signs of pests.",
+      "Maintain current humidity levels.",
+      "Ensure proper air circulation."
+    ]
+  }
+]

@@ -1,0 +1,76 @@
+{# templates/setup.html #}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="setup-container">
+    <h1>Start using the intelligent watering system</h1>
+    <p class="setup-subtitle">
+        When using or replacing plants for the first time, please upload photos of the plants first, fill in the information of the flowerpot and its location.
+    </p>
+
+    <form action="{{ url_for('setup') }}" method="post" enctype="multipart/form-data" class="setup-form">
+        <!-- 植物图片 -->
+        <div class="form-group">
+            <label for="plantImage">Plant Image</label>
+            <input type="file" id="plantImage" name="plant_image" accept="image/*" required>
+        </div>
+
+        <!-- 花盆信息 -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Pot Diameter</label>
+                <input type="number" step="0.1" name="pot_diameter"
+                       value="{{ pot_info.pot_diameter if pot_info.pot_diameter is defined }}">
+            </div>
+            <div class="form-group">
+                <label>Pot Height</label>
+                <input type="number" step="0.1" name="pot_height"
+                       value="{{ pot_info.pot_height if pot_info.pot_height is defined }}">
+            </div>
+        </div>
+
+        <!-- 位置信息 -->
+        <div class="form-row">
+            <div class="form-group">
+                <label>Latitude</label>
+                <input type="text" name="latitude" id="latitudeInputSetup"
+                       value="{{ pot_info.latitude if pot_info.latitude is defined }}">
+            </div>
+            <div class="form-group">
+                <label>Longitude</label>
+                <input type="text" name="longitude" id="longitudeInputSetup"
+                       value="{{ pot_info.longitude if pot_info.longitude is defined }}">
+            </div>
+        </div>
+
+        <button type="button" class="btn" id="getLocationBtnSetup">Get Current Location</button>
+
+        <div class="setup-actions">
+            <button type="submit" class="btn primary">Create</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const getLocationBtnSetup = document.getElementById('getLocationBtnSetup');
+    if (getLocationBtnSetup) {
+        getLocationBtnSetup.addEventListener('click', () => {
+            if (!navigator.geolocation) {
+                alert("The current browser does not support geolocation");
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const lat = pos.coords.latitude.toFixed(6);
+                    const lon = pos.coords.longitude.toFixed(6);
+                    document.getElementById('latitudeInputSetup').value = lat;
+                    document.getElementById('longitudeInputSetup').value = lon;
+                },
+                (err) => {
+                    alert("Failed to get location" + err.message);
+                }
+            );
+        });
+    }
+</script>
+{% endblock %}

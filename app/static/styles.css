@@ -1,0 +1,231 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+}
+
+.nav-left {
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-button {
+    background: #ffffff;
+    color: #4CAF50;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.page-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.box {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-top: 15px;
+}
+
+.btn {
+    background: #4CAF50;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: #43A047;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+input {
+    width: 80%;
+    padding: 6px;
+    margin: 5px 0;
+}
+
+/* 浇水记录表 */
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.log-table th, .log-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.log-table th {
+    background: #f0f0f0;
+}
+
+/* charts 区域可滚动 */
+.charts-container {
+    max-width: 900px;
+    margin: 0 auto 30px;
+}
+
+.chart-box {
+    background: #fff;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    height: 260px; /* 固定高度，内部 canvas 自适应，页面整体可滚动 */
+}
+
+/* modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 320px;
+    box-shadow: 0 0 10px #555;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+.dashboard-container {
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.meta {
+    text-align: center;
+    margin: 10px 0 20px;
+    color: #555;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 20px;
+}
+
+.chart-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.chart-card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.nav-button.danger {
+    background: #e53935;
+    color: white;
+}
+
+.nav-button.danger:hover {
+    background: #c62828;
+}
+
+.setup-container {
+    max-width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.setup-container h1 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.setup-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.setup-form .form-group {
+    margin-bottom: 15px;
+}
+
+.setup-form label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.setup-form input[type="text"],
+.setup-form input[type="number"],
+.setup-form input[type="file"] {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.setup-actions {
+    margin-top: 20px;
+    text-align: center;
+}

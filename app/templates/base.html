@@ -1,0 +1,108 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <title>AI Smart Watering System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<nav class="top-nav">
+    <div class="nav-left">🌱 AI Smart Watering System</div>
+    <div class="nav-right">
+        <a href="{{ url_for('index') }}" class="nav-link">🏠Home</a>
+        <a href="{{ url_for('dashboard') }}" class="nav-link">📊Plant Data</a>
+        <button class="nav-button" id="openPotModal">🪣Pot Setting</button>
+        <form action="{{ url_for('reset_route') }}" method="post" style="display:inline;" 
+            onsubmit="return confirm('⚠️ Are you sure you want to reset? All data and pictures will be permanently deleted!');">
+            <button type="submit" class="nav-button danger">
+                ❕Reset Plant❕
+            </button>
+        </form>
+    </div>
+</nav>
+
+<div class="page-container">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- ========== 花盆设置弹窗 ========== -->
+<div class="modal-overlay" id="potModalOverlay" style="display:none;">
+    <div class="modal">
+        <h2>Pot Setting</h2>
+        <form method="POST" action="{{ url_for('save_pot') }}">
+            <div class="form-group">
+                <label>Pot Diameter (cm)</label>
+                <input type="number" step="0.1" name="pot_diameter"
+                       value="{{ pot_info.pot_diameter if pot_info is defined and pot_info.pot_diameter is defined }}">
+            </div>
+            <div class="form-group">
+                <label>Pot Height (cm)</label>
+                <input type="number" step="0.1" name="pot_height"
+                       value="{{ pot_info.pot_height if pot_info is defined and pot_info.pot_height is defined }}">
+            </div>
+
+            <div class="form-group">
+                <label>Latitude</label>
+                <input type="text" name="latitude"
+                       id="latitudeInput"
+                       value="{{ pot_info.latitude if pot_info is defined and pot_info.latitude is defined }}">
+            </div>
+            <div class="form-group">
+                <label>Longitude</label>
+                <input type="text" name="longitude"
+                       id="longitudeInput"
+                       value="{{ pot_info.longitude if pot_info is defined and pot_info.longitude is defined }}">
+            </div>
+
+            <button type="button" class="btn" id="getLocationBtn">Get Current Location</button>
+
+            <div class="modal-actions">
+                <button type="submit" class="btn primary">Save</button>
+                <button type="button" class="btn" id="closePotModal">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // 打开/关闭弹窗
+    const openPotModal = document.getElementById('openPotModal');
+    const closePotModal = document.getElementById('closePotModal');
+    const potModalOverlay = document.getElementById('potModalOverlay');
+
+    if (openPotModal) {
+        openPotModal.addEventListener('click', () => {
+            potModalOverlay.style.display = 'flex';
+        });
+    }
+    if (closePotModal) {
+        closePotModal.addEventListener('click', () => {
+            potModalOverlay.style.display = 'none';
+        });
+    }
+
+    // 获取浏览器定位（纬度经度）
+    const getLocationBtn = document.getElementById('getLocationBtn');
+    if (getLocationBtn) {
+        getLocationBtn.addEventListener('click', () => {
+            if (!navigator.geolocation) {
+                alert("The current browser does not support geolocation");
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const lat = pos.coords.latitude.toFixed(6);
+                    const lon = pos.coords.longitude.toFixed(6);
+                    document.getElementById('latitudeInput').value = lat;
+                    document.getElementById('longitudeInput').value = lon;
+                },
+                (err) => {
+                    alert("Failed to get location" + err.message);
+                }
+            );
+        });
+    }
+</script>
+</body>
+</html>
