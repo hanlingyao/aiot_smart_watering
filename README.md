@@ -29,7 +29,7 @@ Soil Sensor → ESP32 → WiFi(JSON POST) → Flask Server → DB → Dashboard
 ---
 
 ## 4. Project Structure
-
+```
 .
 ├─app
 │  │  .DS_Store
@@ -107,7 +107,7 @@ Soil Sensor → ESP32 → WiFi(JSON POST) → Flask Server → DB → Dashboard
     │
     └─camera
             camera.ino
-
+```
 ---
 
 ## 5. Hardware Required
