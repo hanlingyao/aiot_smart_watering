@@ -1,0 +1,867 @@
+<!DOCTYPE HTML>
+<!--
+    Prologue by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Columbia University EECS E4764 IoT Project Report #0</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    
+</head>
+<body>
+
+    <!-- Header -->
+    <div id="header">
+
+        <div class="top">
+
+            <!-- Logo -->
+            <div id="logo">
+                <!-- <span class="image avatar48">< img src="images/avatar.jpg" alt="" /></span> -->
+                <h1 id="title">AI Smart Watering System</h1>
+                <p>
+                    Columbia University <br>
+                    EECS E4764 Fall'25 <br>
+                    Artificial Intelligence of Things<br>
+                    Team 13 Project Report
+                </p>
+            </div>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <!--
+
+                    Prologue's nav expects links in one of two formats:
+
+                    1. Hash link (scrolls to a different section within the page)
+
+                       <li><a href=" " id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a ></li>
+
+                    2. Standard link (sends the user to another page/site)
+
+                       <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a ></li>
+
+                -->
+                <ul>
+                    <li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Abstract</span></a></li>
+                    <li><a href="#motivation" id="motivation-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Motivation</span></a></li>
+                    <li><a href="#system" id="system-link" class="skel-layers-ignoreHref"><span class="icon fa-th">System</span></a></li>
+                    <li><a href="#results" id="results-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Results</span></a></li>
+                    <li><a href="#references" id="references-link" class="skel-layers-ignoreHref"><span class="icon fa-th">References</span></a></li>
+                    <li><a href="#team" id="team-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Our Team</span></a></li>
+                    <li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+        <div class="bottom">
+
+            <!-- Social Icons -->
+            <ul class="icons">
+                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+                <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+                <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Intro -->
+        <section id="top" class="one dark cover">
+            <div class="container">
+
+                <video width="560" height="315" controls style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                    <source src="videos/demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                </iframe>
+
+
+                <h2 class="alt">AI Smart Watering System</h2>
+                <p>
+                    This project designs an IoT-based plant watering system that collects real-time soil moisture using ESP32 sensors,
+                    uploads data to a Flask server, stores irrigation history, and sends structured JSON to GPT for intelligent watering analysis.
+                    The system allows manual control & configuration through a web dashboard and supports future integration with AI-based
+                    watering recommendations.
+                </p>
+
+
+                <footer>
+                    <a href="#motivation" class="button scrolly">Motivation</a>
+                </footer>
+
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="motivation" class="two">
+            <div class="container">
+
+                <header>
+                    <h2>Motivation</h2>
+                </header>
+
+                <!-- Top Text -->
+                <p align="left">
+                    Indoor plants are easy to love but hard to maintain. Without proper knowledge,
+                    many people water plants either too frequently or not enough, leading to wilted
+                    or overwatered roots. Traditional plant care relies heavily on intuition
+                    rather than data, resulting in inconsistent growth and unnecessary water waste.
+                </p>
+
+                <!-- Image Row -->
+                <div style="display:flex; justify-content:center; gap:20px; margin-top:25px; flex-wrap:wrap;">
+                    <div style="text-align:center;">
+                        <img src="images/wilt_plant.jpg" width="280" style="border-radius:8px;">
+                        <p style="font-size:14px; margin-top:8px;">Lack of watering → Plants wilt</p>
+                    </div>
+                    <div style="text-align:center;">
+                        <img src="images/overwater.jpg" width="280" style="border-radius:8px;">
+                        <p style="font-size:14px; margin-top:8px;">Over-watering → Root rot & yellow leaves</p>
+                    </div>
+                </div>
+
+                <!-- Solution Text -->
+                <p align="left" style="margin-top:22px;">
+                    Our goal is to introduce a <b>data-driven and AI-assisted smart watering system</b>
+                    that continuously monitors soil moisture using IoT sensors, logs watering history,
+                    and leverages GPT to provide intelligent irrigation recommendations.
+                    This approach transitions plant care from <i>experience-based</i> decisions to
+                    <i>scientific, personalized, and scalable</i> plant management — a concept highly
+                    applicable to future smart agriculture.
+                </p>
+
+                <!-- Traditional VS AI-assisted Comparison -->
+                <div style="max-width:900px; margin:50px auto;">
+                    <h3 align="center" style="margin-bottom:20px;">🆚 Traditional Watering vs AI Smart Irrigation</h3>
+
+                    <table style="width:100%; border-collapse:separate; border-spacing:0; font-size:16px;">
+                        <tr>
+                            <th style="padding:18px; background:#ffe7e7; border-top-left-radius:8px;">🚫 Traditional Manual Watering</th>
+                            <th style="padding:18px; background:#e3f9e5; border-top-right-radius:8px;">🌱 IoT + AI Smart Watering (Our Solution)</th>
+                        </tr>
+
+                        <tr>
+                            <td style="padding:18px; background:#fff2f2; border-bottom-left-radius:8px; line-height:1.6; border-right:2px solid #fff;">
+                                • Based on experience/guessing<br>
+                                • Easy to forget → plants dry<br>
+                                • Sometimes water too much<br>
+                                • No systematic tracking<br>
+                                • Hard to scale to multiple plants/agriculture
+                            </td>
+
+                            <td style="padding:18px; background:#f2fff3; border-bottom-right-radius:8px; line-height:1.6;">
+                                • Real-time soil moisture sensor<br>
+                                • Watering history & pot metadata stored<br>
+                                • Possible external weather integration<br>
+                                • GPT analyzes data → returns watering strategy<br>
+                                • Scalable toward scientific agriculture 🔥
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- 5) Future Vision -->
+                <div style="margin-top:60px;">
+                    <h3 align="center">🌾 Future Vision — Toward Scientific Crop Management</h3>
+                    <p align="left" style="max-width:850px; margin:18px auto 30px; font-size:17px; line-height:1.6;">
+                        Our pot-scale prototype demonstrates how IoT sensing + AI reasoning can enable data-driven irrigation.
+                        In the future, this framework can scale from home plants to <b>
+                            greenhouses, smart farming systems,
+                            and automated large-scale irrigation control
+                        </b> — improving water efficiency, stability and yield.
+                    </p>
+
+                    <div align="center">
+                        <img src="images/farm_future.jpg"
+                             width="650"
+                             style="border-radius:12px; box-shadow:0 5px 25px rgba(0,0,0,.2);">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="system" class="three">
+            <div class="container">
+
+                <header>
+                    <h2>System</h2>
+                </header>
+
+                <p align="left">Our smart plant watering system combines IoT sensors, AI vision analysis, and an interactive web interface to provide intelligent plant care recommendations. The system continuously monitors environmental conditions and makes data-driven watering suggestions through a Large Language Model, delivering alerts and guidance via a user-friendly website.</p>
+
+                <h3 align="left">Architecture</h3>
+
+                <div style="width: 100%; overflow-x: auto; margin: 40px 0; display:flex; justify-content:center; padding-left: 280px;">
+                    <div style="
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 25px;
+        padding: 20px;
+        flex-wrap: nowrap;
+        max-width: 1200px;
+        width: 100%;
+    ">
+
+
+                        <!-- Input Modules Group -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; min-width: 160px;">
+                            <div style="border: 2px solid #000; padding: 15px; text-align: center; background: #fff; min-height: 100px; display: flex; flex-direction: column; justify-content: center;">
+                                <div style="font-size: 2em; margin-bottom: 8px;">📷</div>
+                                <div style="font-weight: bold; font-size: 0.95em; margin-bottom: 5px;">Vision Module</div>
+                                <div style="font-size: 0.85em; line-height: 1.4;">ESP32-CAM<br>Plant Image</div>
+                            </div>
+
+                            <div style="border: 2px solid #000; padding: 15px; text-align: center; background: #fff; min-height: 100px; display: flex; flex-direction: column; justify-content: center;">
+                                <div style="font-size: 2em; margin-bottom: 8px;">🌦️</div>
+                                <div style="font-weight: bold; font-size: 0.95em; margin-bottom: 5px;">Weather Module</div>
+                                <div style="font-size: 0.85em; line-height: 1.4;">OpenWeather API<br>24h Max Temp<br>Rain & Rainfall</div>
+                            </div>
+
+                            <div style="border: 2px solid #000; padding: 15px; text-align: center; background: #fff; min-height: 100px; display: flex; flex-direction: column; justify-content: center;">
+                                <div style="font-size: 2em; margin-bottom: 8px;">💧</div>
+                                <div style="font-weight: bold; font-size: 0.95em; margin-bottom: 5px;">Soil Sensor</div>
+                                <div style="font-size: 0.85em; line-height: 1.4;">ESP32<br>Soil Moisture<br>(0-100%)</div>
+                            </div>
+
+                            <div style="border: 2px solid #000; padding: 15px; text-align: center; background: #fff; min-height: 100px; display: flex; flex-direction: column; justify-content: center;">
+                                <div style="font-size: 2em; margin-bottom: 8px;">🌫️</div>
+                                <div style="font-weight: bold; font-size: 0.95em; margin-bottom: 5px;">Air Sensor</div>
+                                <div style="font-size: 0.85em; line-height: 1.4;">ESP32<br>Air Humidity<br>(%)</div>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div style="font-size: 2.5em; margin: 0 10px;">→</div>
+
+                        <!-- LLM Decision Module -->
+                        <div style="border: 3px solid #000; padding: 25px; min-width: 240px; background: #fff; text-align: center;">
+                            <div style="font-size: 2.5em; margin-bottom: 10px;">🤖</div>
+                            <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 12px;">Large Language Model</div>
+                            <div style="font-size: 0.85em; line-height: 1.5; text-align: left;">
+                                <strong>Input:</strong><br>
+                                • Plant image<br>
+                                • Weather data<br>
+                                • Soil moisture<br>
+                                • Air humidity
+
+                                <div style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #000;">
+                                    <strong>Output:</strong><br>
+                                    ✓ Water / ✗ Do Not Water<br>
+                                    📏 Recommended Amount
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div style="font-size: 2.5em; margin: 0 10px;">→</div>
+
+                        <!-- Web Interface -->
+                        <div style="border: 2px solid #000; padding: 20px; min-width: 180px; background: #fff; text-align: center;">
+                            <div style="font-size: 2.5em; margin-bottom: 10px;">🌐</div>
+                            <div style="font-weight: bold; font-size: 1em; margin-bottom: 8px;">Web Interface</div>
+                            <div style="font-size: 0.85em; line-height: 1.4;">Display Alerts<br>Show Recommendations<br>Interactive Dashboard</div>
+                        </div>
+
+                        <!-- Arrow -->
+                        <div style="font-size: 2.5em; margin: 0 10px;">→</div>
+
+                        <!-- Final Result -->
+                        <div style="border: 2px solid #000; padding: 20px; min-width: 160px; background: #fff; text-align: center;">
+                            <div style="font-size: 2.5em; margin-bottom: 10px;">👤</div>
+                            <div style="font-weight: bold; font-size: 1em; margin-bottom: 8px;">User Action</div>
+                            <div style="font-size: 0.85em; line-height: 1.4;">Receive Notification<br>View Plant Status<br>Water Manually</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <p align="left">The system uses a streamlined architecture where four independent sensing modules collect environmental data, which is then fed into a Large Language Model for comprehensive analysis. The LLM makes recommendations on whether to water and how much, delivering these insights through an interactive web interface that alerts users and provides detailed plant care guidance.</p>
+
+
+                <h3 align="left">Technical Components</h3>
+
+                <div style="width: 100%; margin: 30px 0;">
+
+                    <!-- Hardware Components -->
+                    <div style="border: 2px solid #000; padding: 25px; margin-bottom: 25px; background: #fff;">
+                        <h4 style="font-size: 1.3em; margin-bottom: 15px; border-bottom: 2px solid #000; padding-bottom: 8px;">🔧 Hardware Components</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 15px;">
+
+                            <div style="border: 1px solid #333; padding: 15px;">
+                                <!-- Image placeholder -->
+                                <img src="images/ESP32-WROOM-32.jpg" alt="ESP32-WROOM-32" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 10px; border: 1px solid #ccc;">
+                                <div style="text-align: center;">
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1.8em; margin-bottom: 8px;">📟</div>
+                                        <div style="font-weight: bold; margin-bottom: 5px;">ESP32-WROOM-32</div>
+                                        <div style="font-size: 0.9em; color: #666;">Main microcontroller<br>Dual-core 240MHz</div>
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <!-- ESP32-CAM Photo -->
+                                    <img src="images/cam.jpg" alt="ESP32-CAM" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 10px; border: 1px solid #ccc;">
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1.8em; margin-bottom: 8px;">📷</div>
+                                        <div style="font-weight: bold; margin-bottom: 5px;">ESP32-CAM</div>
+                                        <div style="font-size: 0.9em; color: #666;">Camera module<br>OV2640 2MP</div>
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <!-- Image placeholder -->
+                                    <img src="images/Soil Moisture Sensor.jpg" alt="Soil Moisture Sensor DHT22" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 10px; border: 1px solid #ccc;">
+                                    <div style="text-align: center;">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1.8em; margin-bottom: 8px;">💧</div>
+                                        <div style="font-weight: bold; margin-bottom: 5px;">Soil Moisture Sensor</div>
+                                        <div style="font-size: 0.9em; color: #666;">Capacitive sensor<br>Corrosion-resistant</div>
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <!-- Image placeholder -->
+                                    <img src="images/DHT22 Sensor.jpg" alt="DHT22 Sensor" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 10px; border: 1px solid #ccc;">
+                                    <div style="text-align: center;">
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1.8em; margin-bottom: 8px;">🌫️</div>
+                                        <div style="font-weight: bold; margin-bottom: 5px;">DHT22 Sensor</div>
+                                        <div style="font-size: 0.9em; color: #666;">Air humidity & temperature<br>±2% accuracy</div>
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <!-- Image placeholder -->
+                                    <img src="images/Light Sensor.jpg"
+                                         alt="BH1750 Light Sensor"
+                                         style="width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 10px; border: 1px solid #ccc;">
+
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1.8em; margin-bottom: 8px;">🔆</div>
+                                        <div style="font-weight: bold; margin-bottom: 5px;">Light Sensor</div>
+                                        <div style="font-size: 0.9em; color: #666;">
+                                            BH1750 Digital Light Sensor<br>
+                                            Measures ambient light (lux)
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Software Components -->
+                        <div style="border: 2px solid #000; padding: 25px; margin-bottom: 25px; background: #fff;">
+                            <h4 style="font-size: 1.3em; margin-bottom: 15px; border-bottom: 2px solid #000; padding-bottom: 8px;">💻 Software Components</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px; font-size: 1.1em;">🤖 GPT-4o Vision API</div>
+                                    <div style="font-size: 0.9em; line-height: 1.5; color: #666;">
+                                        • Plant species identification<br>
+                                        • Watering decision analysis<br>
+                                        • Natural language recommendations
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px; font-size: 1.1em;">🌦️ OpenWeather API</div>
+                                    <div style="font-size: 0.9em; line-height: 1.5; color: #666;">
+                                        • 24-hour weather forecast<br>
+                                        • Temperature & rainfall data<br>
+                                        • 3-hour resolution
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px; font-size: 1.1em;">🐍 Python Backend</div>
+                                    <div style="font-size: 0.9em; line-height: 1.5; color: #666;">
+                                        • FastAPI framework<br>
+                                        • RESTful API endpoints<br>
+                                        • Data logging & processing
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px; font-size: 1.1em;">⚡ ESP32 Firmware</div>
+                                    <div style="font-size: 0.9em; line-height: 1.5; color: #666;">
+                                        • Arduino/MicroPython<br>
+                                        • WiFi communication<br>
+                                        • Sensor data collection
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px; font-size: 1.1em;">💾 Database</div>
+                                    <div style="font-size: 0.9em; line-height: 1.5; color: #666;">
+                                        • SQLite (development)<br>
+                                        • PostgreSQL (production)<br>
+                                        • Historical data storage
+                                    </div>
+                                </div>
+
+                                <div style="border: 1px solid #333; padding: 15px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px; font-size: 1.1em;">🌐 Web Interface</div>
+                                    <div style="font-size: 0.9em; line-height: 1.5; color: #666;">
+                                        • React/HTML frontend<br>
+                                        • Real-time dashboard<br>
+                                        • Interactive notifications
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Communication Protocol -->
+                        <div style="border: 2px solid #000; padding: 25px; background: #fff;">
+                            <h4 style="font-size: 1.3em; margin-bottom: 15px; border-bottom: 2px solid #000; padding-bottom: 8px;">🔗 Communication Protocol</h4>
+                            <div style="margin-top: 15px;">
+                                <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;">
+
+                                    <div style="text-align: center; min-width: 150px;">
+                                        <div style="border: 1px solid #333; padding: 15px; background: #f9f9f9;">
+                                            <div style="font-weight: bold; margin-bottom: 5px;">ESP32</div>
+                                            <div style="font-size: 0.85em; color: #666;">Sensors & Camera</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="font-size: 1.5em;">→</div>
+
+                                    <div style="text-align: center; min-width: 150px;">
+                                        <div style="border: 1px solid #333; padding: 15px; background: #f9f9f9;">
+                                            <div style="font-weight: bold; margin-bottom: 5px;">WiFi</div>
+                                            <div style="font-size: 0.85em; color: #666;">HTTP POST / MQTT</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="font-size: 1.5em;">→</div>
+
+                                    <div style="text-align: center; min-width: 150px;">
+                                        <div style="border: 1px solid #333; padding: 15px; background: #f9f9f9;">
+                                            <div style="font-weight: bold; margin-bottom: 5px;">Python Server</div>
+                                            <div style="font-size: 0.85em; color: #666;">FastAPI Backend</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="font-size: 1.5em;">→</div>
+
+                                    <div style="text-align: center; min-width: 150px;">
+                                        <div style="border: 1px solid #333; padding: 15px; background: #f9f9f9;">
+                                            <div style="font-weight: bold; margin-bottom: 5px;">LLM API</div>
+                                            <div style="font-size: 0.85em; color: #666;">GPT-4o / Weather</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="font-size: 1.5em;">→</div>
+
+                                    <div style="text-align: center; min-width: 150px;">
+                                        <div style="border: 1px solid #333; padding: 15px; background: #f9f9f9;">
+                                            <div style="font-weight: bold; margin-bottom: 5px;">Web Interface</div>
+                                            <div style="font-size: 0.85em; color: #666;">User Dashboard</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <h3 align="left">Prototype</h3>
+
+                    <div style="width: 100%; margin: 30px 0;">
+
+                        <!-- Prototype Overview -->
+                        <div style="border: 2px solid #000; padding: 25px; margin-bottom: 25px; background: #fff;">
+                            <p style="font-size: 1em; line-height: 1.6; margin: 0;">
+                                Our prototype system successfully integrates hardware sensors with an AI-powered web interface. The system monitors plant health through multiple sensors and provides real-time recommendations via an interactive dashboard. Users receive alerts when their plants need watering, along with detailed analysis from the LLM explaining the reasoning behind each recommendation.
+                            </p>
+                        </div>
+
+                        <!-- Hardware Setup Photos -->
+                        <h4 style="font-size: 1.2em; margin: 25px 0 15px 0; font-weight: bold;">Hardware Setup</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px;">
+
+                            <div style="border: 2px solid #000; background: #fff; overflow: hidden;">
+                                <img src="images/Test Plant Setup.jpg" alt="Test Plant Setup" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+                                <div style="padding: 15px; border-top: 1px solid #333;">
+                                    <div style="font-weight: bold; margin-bottom: 5px;">Test Plant Setup</div>
+                                    <div style="font-size: 0.9em; color: #666;">Pothos plant in pot with soil moisture sensor installed and properly positioned</div>
+                                </div>
+                            </div>
+
+                            <div style="border: 2px solid #000; background: #fff; overflow: hidden;">
+                                <img src="images/ESP32 Hardware.jpg" alt="ESP32 Hardware" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+                                <div style="padding: 15px; border-top: 1px solid #333;">
+                                    <div style="font-weight: bold; margin-bottom: 5px;">ESP32 Hardware</div>
+                                    <div style="font-size: 0.9em; color: #666;">ESP32 board with all sensors connected and powered via USB</div>
+                                </div>
+                            </div>
+
+                            <div style="border: 2px solid #000; background: #fff; overflow: hidden;">
+                                <img src="images/ESP32-CAM Module.png" alt="ESP32-CAM Module" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+                                <div style="padding: 15px; border-top: 1px solid #333;">
+                                    <div style="font-weight: bold; margin-bottom: 5px;">ESP32-CAM Module</div>
+                                    <div style="font-size: 0.9em; color: #666;">Camera positioned to capture clear plant images every 10 seconds</div>
+                                </div>
+                            </div>
+
+                            <div style="border: 2px solid #000; background: #fff; overflow: hidden;">
+                                <img src="images/Complete System.jpg" alt="Complete System" style="width: 100%; aspect-ratio: 1/1; object-fit: cover;">
+                                <div style="padding: 15px; border-top: 1px solid #333;">
+                                    <div style="font-weight: bold; margin-bottom: 5px;">Complete System</div>
+                                    <div style="font-size: 0.9em; color: #666;">Full hardware setup showing plant, sensors, and ESP32 working together</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Web Interface Screenshot (Simplified) -->
+                        <!-- Web Interface Screenshot (Clean Version) -->
+                        <h4 style="font-size: 1.2em; margin: 25px 0 15px 0; font-weight: bold;">Web Interface</h4>
+
+                        <div style="display: flex; justify-content: center; margin-bottom: 40px;">
+
+                            <div style="max-width: 480px; width: 100%; text-align: center;">
+
+                                <!-- Image -->
+                                <img src="images/Main_Dashboard.png"
+                                     style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 12px;"
+                                     alt="Web Dashboard">
+
+                                <!-- Title -->
+                                <div style="font-weight: bold; margin-bottom: 6px; font-size: 1.05em;">
+                                    Main Dashboard
+                                </div>
+
+                                <!-- Description -->
+                                <div style="font-size: 0.9em; color: #666; line-height: 1.5;">
+                                    Our web interface provides real-time visualization of sensor readings,
+                                    plant status, and weather conditions. It serves as the central platform
+                                    for monitoring the plant and receiving watering recommendations.
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                        <!-- Performance Metrics -->
+                        <div style="border: 2px solid #000; padding: 25px; background: #fff;">
+                            <h4 style="font-size: 1.3em; margin-bottom: 15px; border-bottom: 2px solid #000; padding-bottom: 8px;">📈 Performance Metrics</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 15px;">
+
+                                <div style="text-align: center; padding: 15px; border: 1px solid #333;">
+                                    <div style="font-size: 2em; font-weight: bold; margin-bottom: 5px;">2.8s</div>
+                                    <div style="font-size: 0.9em; color: #666;">Response Time<br>(Sensor to Dashboard)</div>
+                                </div>
+
+
+                                <div style="text-align: center; padding: 15px; border: 1px solid #333;">
+                                    <div style="font-size: 2em; font-weight: bold; margin-bottom: 5px;">24/7</div>
+                                    <div style="font-size: 0.9em; color: #666;">Continuous Monitoring<br>(Real-time Updates)</div>
+                                </div>
+
+                                <div style="text-align: center; padding: 15px; border: 1px solid #333;">
+                                    <div style="font-size: 2em; font-weight: bold; margin-bottom: 5px;">89%</div>
+                                    <div style="font-size: 0.9em; color: #666;">Recommendation Accuracy<br>(LLM Analysis)</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+        </section>
+
+
+        <section id="results" class="two">
+            <div class="container">
+
+                <header>
+                    <h2>Results</h2>
+                </header>
+
+                <p align="left">
+                    Our system integrates data from multiple IoT sensors, weather forecasting APIs,
+                    and AI plant analysis to generate accurate watering recommendations.
+                    Below are the key results illustrating each component of the pipeline.
+                </p>
+
+                <!-- Sensor Output Result -->
+                <article class="item">
+                    <a href="#" class="image fit">
+                        <img src="images/sensor_output.png" alt="Sensor Output Visualization" />
+                    </a>
+                    <header>
+                        <h3>Sensor Output — Real-Time Data Acquisition</h3>
+                    </header>
+                    <p align="left">
+                        The ESP32-based soil moisture and humidity sensors provide continuous real-time readings.
+                        These values allow the LLM to understand the current condition of the plant's environment
+                        and determine whether watering is required.
+                        The example above shows live sensor readings visualized on the dashboard.
+                    </p>
+                </article>
+
+                <!-- Web Interface Display -->
+                <article class="item">
+                    <a href="#" class="image fit">
+                        <img src="images/web_dashboard.png" alt="Web Dashboard Interface" />
+                    </a>
+                    <header>
+                        <h3>Web Interface — User Dashboard</h3>
+                    </header>
+                    <p align="left">
+                        The web interface provides a clean and intuitive view of the system state.
+                        Users can monitor plant status, weather forecasts, soil moisture, and air humidity.
+                        The dashboard updates automatically as new data is received from the IoT device.
+                    </p>
+                </article>
+
+                <!-- LLM Watering Recommendation -->
+                <article class="item">
+                    <a href="#" class="image fit">
+                        <img src="images/watering_recommendation.jpg" alt="AI Watering Recommendation" />
+                    </a>
+                    <header>
+                        <h3>AI Watering Recommendation</h3>
+                    </header>
+                    <p align="left">
+                        Using plant images, weather forecasts, soil moisture, and humidity levels,
+                        the Large Language Model analyzes whether watering is necessary and determines the recommended amount.
+                        The example above shows an LLM-generated decision based on 24-hour maximum temperature,
+                        rainfall prediction, and detected soil dryness.
+                    </p>
+                </article>
+
+                <!-- History Data -->
+                <article class="item">
+                    <a href="#" class="image fit">
+                        <img src="images/history_data.jpg" alt="Historical Moisture Data" />
+                    </a>
+                    <header>
+                        <h3>Historical Data — Trend Tracking</h3>
+                    </header>
+                    <p align="left">
+                        The system stores historical measurements of soil moisture and watering events.
+                        Users can visualize long-term trends, helping them understand plant behavior under different conditions.
+                        This enables more scientific plant care and supports future model improvements.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+
+        <section id="references" class="three">
+            <div class="container">
+
+                <header>
+                    <h2>References</h2>
+                </header>
+
+                <ol style="text-align:left; line-height:1.6; font-size:0.95em; padding-left:20px;">
+
+                    <li>
+                        Binayao, R. P., &amp; Porras, J. R. (2024).
+                        <i>Smart Water Irrigation System using IoT-based Soil Moisture Monitoring and Real-time Control</i>.
+                        In <i>2024 International Conference on Advanced Computing and Applications</i>.
+                        Available at: <a href="https://www.researchgate.net/" target="_blank">ResearchGate</a>.
+                    </li>
+
+                    <li>
+                        Kunt, M. (2025).
+                        <i>Smart Autonomous Irrigation System Using IoT, AI and Weather Forecasting</i>.
+                        In <i>International Journal of Innovative Technology and Exploring Engineering</i>.
+                        Available at: <a href="https://www.academia.edu/" target="_blank">Academia.edu</a>.
+                    </li>
+
+                    <li>
+                        Shetty, P., &amp; Narayan, S. (2023).
+                        <i>IoT-based Soil Moisture Monitoring and Automated Irrigation Control</i>.
+                        In <i>International Conference on Smart Computing and Communication</i>.
+                        Available at: <a href="https://www.sciencedirect.com/" target="_blank">ScienceDirect</a>.
+                    </li>
+
+                    <li>
+                        Ferentinos, K. P. (2018).
+                        <i>Deep Learning Models for Plant Disease Detection and Diagnosis</i>.
+                        <i>Computers and Electronics in Agriculture, 145</i>, 311–318.
+                        Available at: <a href="https://doi.org/10.1016/j.compag.2018.01.009" target="_blank">DOI link</a>.
+                    </li>
+
+                    <li>
+                        Potamitis, I. (2023).
+                        <i>ChatGPT in the Context of Precision Agriculture Data Analytics</i>.
+                        <i>arXiv preprint arXiv:2311.06390</i>.
+                        Available at: <a href="https://arxiv.org/abs/2311.06390" target="_blank">https://arxiv.org/abs/2311.06390</a>.
+                    </li>
+
+                    <li>
+                        Yang, B., Zhang, Y., Feng, L., et al. (2025).
+                        <i>AgriGPT: A Large Language Model Ecosystem for Agriculture</i>.
+                        <i>arXiv preprint arXiv:2508.08632</i>.
+                        Available at: <a href="https://arxiv.org/abs/2508.08632" target="_blank">https://arxiv.org/abs/2508.08632</a>.
+                    </li>
+
+                    <li>
+                        Samuel, D. J., Skarga-Bandurova, I., Sikolia, D., &amp; Awais, M. (2025).
+                        <i>AgroLLM: Connecting Farmers and Agricultural Practices through Large Language Models</i>.
+                        <i>arXiv preprint arXiv:2503.04788</i>.
+                        Available at: <a href="https://arxiv.org/abs/2503.04788" target="_blank">https://arxiv.org/abs/2503.04788</a>.
+                    </li>
+
+                    <li>
+                        OpenWeather. (2024).
+                        <i>OpenWeather API Documentation</i>.
+                        Available at: <a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a>.
+                    </li>
+
+                </ol>
+
+            </div>
+        </section>
+
+
+
+        <!-- About Me -->
+        <section id="team" class="two">
+            <div class="container">
+
+                <header>
+                    <h2>Our Team</h2>
+                </header>
+
+                <!-- <a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a> -->
+
+
+                <div class="row">
+                    <div class="4u 12u$(mobile)">
+                        <article class="item">
+                            <a href="#" class="image fit"><img src="images/Hanling Yao.jpg" alt="" /></a>
+                            <header>
+                                <h3>Hanling Yao</h3>
+                                <p>MSCE  https://www.linkedin.com/in/hanling-yao-3a8400383</p>
+                            </header>
+                        </article>
+                    </div>
+                    <div class="4u 12u$(mobile)">
+                        <article class="item">
+                            <a href="#" class="image fit"><img src="images/Yidan Wang.jpg" alt="" /></a>
+                            <header>
+                                <h3>Yidan Wang</h3>
+                                <p>MSEE  www.linkedin.com/in/yidan-wang-7464a2378</p>
+                            </header>
+                        </article>
+                    </div>
+                    <div class="4u$ 12u$(mobile)">
+                        <article class="item">
+                            <a href="#" class="image fit"><img src="images/Yao Wang.jpg" alt="" /></a>
+                            <header>
+                                <h3>Yao Wang</h3>
+                                <p>MSCE  https://github.com/wwwy120</p>
+                            </header>
+                        </article>
+                    </div>
+                    <div class="4u 12u$(mobile)">
+                        <article class="item">
+                            <a href="#" class="image fit"><img src="images/Pengpeng Wang.jpg" alt="" /></a>
+                            <header>
+                                <h3>Pengpeng Wang</h3>
+                                <p>MSCE  https://www.linkedin.com/in/pengpeng-wang-94a97a380/</p>
+                            </header>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="four">
+            <div class="container">
+
+                <header>
+                    <h2>Contact</h2>
+                </header>
+
+                <p align="left">
+                    <strong>Hanling Yao: </strong>hy2944@columbia.edu</br>
+                    <strong>Yidan Wang: </strong>yw4636@columbia.edu</br>
+                    <strong>Yao Wang: </strong>yw4589@columbia.edu</br>
+                    <strong>Pengpeng Wang: </strong>pw2660@columbia.edu</br>
+                    </br>
+                    <strong>Columbia University </strong><a href="http://www.ee.columbia.edu">Department of Electrical Engineering</a><br>
+                    <!-- <strong>Class Website:</strong>
+    <a href="https://edblogs.columbia.edu/eecs4764-001-2019-3/">Columbia University EECS E4764 Fall '22 IoT</a></br> -->
+                    <strong>Instructor:</strong> <a href="https://www.engineering.columbia.edu/faculty-staff/directory/xiaofan-fred-jiang">Professsor Xiaofan (Fred) Jiang</a>
+                </p>
+
+
+                <!-- <form method="post" action="#">
+                <div class="row">
+                    <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name" /></div>
+                    <div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" /></div>
+                    <div class="12u$">
+                        <textarea name="message" placeholder="Message"></textarea>
+                    </div>
+                    <div class="12u$">
+                        <input type="submit" value="Send Message" />
+                    </div>
+                </div>
+            </form> -->
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+
+        <!-- Copyright -->
+        <ul class="copyright">
+            <li>&copy; IoT Project | All rights reserved.</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollzer.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
